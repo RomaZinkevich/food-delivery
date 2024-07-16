@@ -19,5 +19,6 @@ This project is a full-stack food delivery application developed using Express f
 **In progress**
 
 ## ERD
-![image](https://github.com/user-attachments/assets/be371dce-8746-4ba8-b64b-9a5ecd2ec58e)
+![image](https://github.com/user-attachments/assets/0f898ec8-6b55-45cf-8528-353f5f96268d)
+
 
