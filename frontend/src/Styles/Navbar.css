@@ -1,0 +1,30 @@
+.navbar {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar img {
+  width: 70px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar li {
+  list-style: none;
+  color: #49557e;
+  font-size: 17px;
+}
+
+.iconContainer {
+  display: flex;
+}
+
+.icons {
+  padding-left: 20px;
+  font-size: 25px;
+}
