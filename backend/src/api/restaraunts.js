@@ -7,7 +7,6 @@ const { getAllRestaraunts } = require("../db/restarauntdb");
 // @access Public
 router.get("/", async (req, res, next) => {
         const result = await getAllRestaraunts();
-        console.log(result)
         return res.json(result);
   });
 

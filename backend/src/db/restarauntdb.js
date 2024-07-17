@@ -8,7 +8,7 @@ const getAllRestaraunts = async () => {
         if (result.rowCount === 0)
             return "Nothing";
             //throw new ContentError("ContentDatabaseError", "Content ID Not Found");
-        return result.rows[0];
+        return result.rows;
     } catch (error) {
         return error.message;
         //throw new ContentError("ContentDatabaseError", error.details ? error.details : "Unexpected database error");
