@@ -66,3 +66,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+* {
+  font-family: Outfit;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 90%;
+  margin: auto;
+}
