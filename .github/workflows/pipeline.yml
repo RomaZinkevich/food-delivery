@@ -5,7 +5,6 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: Docker Image
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -14,7 +13,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        images: ${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}
         tags: |
           type=raw,value=latest,enable={{is_default_branch}}
           type=ref,event=branch
