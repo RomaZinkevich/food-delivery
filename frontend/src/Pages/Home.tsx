@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Menu from "../Components/Menu";
 import "../Styles/Home.css";
 const Home = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
   return (
     <div>
       <div className="header">
@@ -15,7 +17,10 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <Menu />
+      <Menu
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
     </div>
   );
 };

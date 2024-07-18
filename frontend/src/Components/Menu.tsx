@@ -3,7 +3,15 @@ import "../Styles/Menu.css";
 import { menuItems } from "../assets/menuitems";
 import { categories } from "../assets/categories";
 
-const Menu = () => {
+interface MenuProps {
+  selectedCategory: string;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Menu: React.FC<MenuProps> = ({
+  selectedCategory,
+  setSelectedCategory,
+}) => {
   return (
     <div className="menu">
       <h1>Go crazy</h1>
@@ -14,10 +22,26 @@ const Menu = () => {
         soluta eum obcaecati, ut iusto rerum corporis nostrum voluptate a!
         Tempora, voluptas tempore.
       </p>
-      <div className="menu-list">
+      <div className="category-list">
         {categories.map((item: string, i: number) => (
+          <div
+            onClick={() =>
+              setSelectedCategory((prev) => (prev === item ? "All" : item))
+            }
+            className="category-item"
+            key={i}
+          >
+            <p className={selectedCategory === item ? "active" : ""}>{item}</p>
+          </div>
+        ))}
+      </div>
+      <hr />
+      <div className="menu-list">
+        {menuItems.map((item, i) => (
           <div className="menu-item" key={i}>
-            <p>{item}</p>
+            <h2>{item.name}</h2>
+            <p>{item.description}</p>
+            <p>{item.price}</p>
           </div>
         ))}
       </div>
