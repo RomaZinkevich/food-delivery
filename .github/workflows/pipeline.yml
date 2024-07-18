@@ -1,0 +1,85 @@
+name: CI/CD
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Fetch code
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Docker Build
+        uses: docker/setup-buildx-action@v3
+
+      - name: Docker login
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker Metadata action for Backend
+        uses: docker/metadata-action@v5.0.0
+        id: backend-meta
+        with:
+          images: "${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}"
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=ref,event=branch
+
+      - name: Build and push Docker Backend images
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: true
+          tags: ${{ steps.backend-meta.outputs.tags }}
+          labels: ${{ steps.backend-meta.outputs.labels }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Fetch Code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.DEPLOY_KEY_PRIVATE }}" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Install rsync
+        run: sudo apt --assume-yes --no-install-recommends install rsync
+
+      - name: Create and sync stack configuration
+        run: |
+          mkdir -p prod_stack
+          cp docker-compose.server.yml prod_stack/docker-compose.yml
+          echo "BACKEND_IMAGE=${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}" >> prod_stack/.env
+          rsync -r prod_stack "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}:./"
+
+      - name: Start containers via SSH
+        run:
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}
+          "
+          docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }};
+          cd prod_stack;
+          docker-compose pull;
+          docker-compose up -d;
+          "
+
+env:
+  REGISTRY: ghcr.io
+  REPOSITORY: ${{ github.repository }}
+  BACKEND_IMAGE_NAME: backend-food-backend
+  DB_IMAGE_NAME: postgres
