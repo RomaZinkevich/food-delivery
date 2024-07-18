@@ -1,0 +1,27 @@
+services:
+  food-backend:
+    build:
+      context: .
+    ports:
+      - '5000:5000'
+    volumes:
+      - '.:/opt/app'
+    environment:
+      - "CI:'true'"
+      - DB_HOST=food-db
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=fooddelivery
+    restart: always
+  food-db:
+    image: postgres:latest
+    container_name: pgcontainer
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+volumes:
+  my_dbdata:

@@ -15,5 +15,13 @@ const pool = new Pool({
   password: db_password
 });
 
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('Error connecting to PostgreSQL:', err.stack);
+  } else {
+    console.log('Connected to PostgreSQL at', pool.options.host);
+  }
+});
+
 
 module.exports = pool;

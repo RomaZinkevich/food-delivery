@@ -10,7 +10,7 @@ const getAllRestaraunts = async () => {
             //throw new ContentError("ContentDatabaseError", "Content ID Not Found");
         return result.rows;
     } catch (error) {
-        return error.message;
+        console.log(error.message);
         //throw new ContentError("ContentDatabaseError", error.details ? error.details : "Unexpected database error");
     }
 };
