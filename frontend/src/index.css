@@ -67,6 +67,24 @@ button:focus-visible {
   }
 } */
 
+:root {
+  background-color: rgb(246, 232, 215);
+}
+
+:root::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+:root::-webkit-scrollbar-thumb {
+  background-color: rgb(114, 108, 108);
+  border-radius: 10px;
+}
+
+:root::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 * {
   font-family: Outfit;
   box-sizing: border-box;
@@ -75,4 +93,13 @@ button:focus-visible {
 .app {
   width: 90%;
   margin: auto;
+}
+
+@keyframes fadingEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

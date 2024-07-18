@@ -1,11 +1,30 @@
 .header {
   height: 34vw;
   margin: 30px auto;
-  background: url("../images/main.png") no-repeat;
+  background: url("../images/main.jpg") no-repeat;
   background-size: cover;
   position: relative;
+  border-radius: 20px;
 }
 
 .content {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-width: 70%;
+  bottom: 10%;
+  left: 6vw;
+  animation: fadingEffect 3s;
+}
+.content h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: max(4vw, 22px);
+  color: bisque;
+}
+.content p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1vw;
+  color: bisque;
 }
