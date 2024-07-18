@@ -18,13 +18,35 @@
   list-style: none;
   color: #49557e;
   font-size: 17px;
+  cursor: pointer;
 }
 
-.iconContainer {
+.navbar .active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid red;
+}
+
+.navbarRight {
   display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.icons {
-  padding-left: 20px;
-  font-size: 25px;
+.icon1 {
+  position: relative;
+  font-size: 24px;
+}
+
+.icon2 {
+  font-size: 24px;
+}
+
+.icon1 .dot {
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: orange;
+  border-radius: 50%;
+  top: -8px;
+  right: -8px;
 }

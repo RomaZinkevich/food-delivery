@@ -67,6 +67,11 @@ button:focus-visible {
   }
 } */
 
+* {
+  font-family: Outfit;
+  box-sizing: border-box;
+}
+
 .app {
   width: 90%;
   margin: auto;
