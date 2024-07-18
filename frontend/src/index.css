@@ -76,3 +76,12 @@ button:focus-visible {
   width: 90%;
   margin: auto;
 }
+
+@keyframes fadingEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

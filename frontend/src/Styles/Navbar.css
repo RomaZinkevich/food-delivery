@@ -16,9 +16,10 @@
 
 .navbar li {
   list-style: none;
-  color: #49557e;
+  color: black;
   font-size: 17px;
   cursor: pointer;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbar .active {
