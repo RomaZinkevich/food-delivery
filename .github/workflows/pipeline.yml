@@ -5,7 +5,6 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: Docker Image
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -33,8 +32,8 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: ${{ steps.backend-meta.outputs.tags }}
+        labels: ${{ steps.backend-meta.outputs.labels }}
 
   deploy:
     runs-on: ubuntu-latest
