@@ -5,44 +5,36 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    name: Docker Image
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
-      - name: Fetch code
-        uses: actions/checkout@v3
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Setup Docker Build
-        uses: docker/setup-buildx-action@v3
-
-      - name: Docker login
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Docker Metadata action for Backend
-        uses: docker/metadata-action@v5.0.0
-        id: backend-meta
-        with:
-          images: "${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}"
-          tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=ref,event=branch
-
-      - name: Build and push Docker Backend images
-        uses: docker/build-push-action@v5.0.0
-        with:
-          context: ./backend
-          file: ./backend/Dockerfile
-          push: true
-          tags: ${{ steps.backend-meta.outputs.tags }}
-          labels: ${{ steps.backend-meta.outputs.labels }}
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Extract metadata for the Docker image
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=raw,value=latest,enable={{is_default_branch}}
+          type=sha,prefix={{branch}}-,suffix=-{{date 'X'}}
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to Docker registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,7 +56,7 @@ jobs:
       - name: Create and sync stack configuration
         run: |
           mkdir -p prod_stack
-          cp docker-compose.server.yml prod_stack/docker-compose.yml
+          cp docker-compose.yml prod_stack/docker-compose.yml
           echo "BACKEND_IMAGE=${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}" >> prod_stack/.env
           rsync -r prod_stack "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}:./"
 
