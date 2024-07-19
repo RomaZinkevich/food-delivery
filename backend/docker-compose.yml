@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   food-backend:
     build:
@@ -7,7 +9,7 @@ services:
     volumes:
       - '.:/opt/app'
     environment:
-      - "CI:'true'"
+      - CI=true
       - DB_HOST=food-db
       - DB_PORT=${DB_PORT}
       - DB_USER=${DB_USER}
