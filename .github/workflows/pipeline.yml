@@ -68,6 +68,9 @@ jobs:
           mkdir -p dev_stack
           cp backend/docker-compose.yml dev_stack/docker-compose.yml
           echo "BACKEND_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" >> dev_stack/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> dev_stack/.env
+          echo "DB_USER=${{ secrets.DB_USER }}" >> dev_stack/.env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> dev_stack/.env
           rsync -r dev_stack "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}:./"
 
       - name: Start containers via SSH
