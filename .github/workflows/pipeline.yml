@@ -5,7 +5,7 @@ on:
 env:
   REGISTRY: ghcr.io
   REPOSITORY: ${{ github.repository }}
-  IMAGE_NAME: food-delivery-backend
+  IMAGE_NAME: romazinkevich/food-delivery-backend
 jobs:
   build:
     runs-on: ubuntu-latest
