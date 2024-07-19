@@ -13,7 +13,7 @@ This project is a full-stack food delivery application developed using Express f
 
 ### Backend
 - **Express**: Web application framework for Node.js.
-- **MongoDB**: NoSQL database for storing application data.
+- **PostgreSQL**: SQL database for storing application data.
 
 ## Usage
 **In progress**
