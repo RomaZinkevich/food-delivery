@@ -10,5 +10,5 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   margin-top: 30px;
-  gap: 30px;
+  gap: 20px;
 }

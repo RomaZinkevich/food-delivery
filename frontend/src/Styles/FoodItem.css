@@ -1,3 +1,56 @@
-.foodItemInfo {
+.foodCard {
   border: 2px solid red;
+  width: 100%;
+  border-radius: 10px;
+  margin: auto;
+  transition: 0.3s;
+  animation: fadingEffect 1s;
+}
+
+.foodImage {
+  position: relative;
+}
+
+.foodImage .adding {
+  position: absolute;
+  width: 35px;
+  bottom: 15px;
+  right: 15px;
+  border: 2px red solid;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.foodCounter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.foodCounter p {
+  margin-bottom: 30px;
+}
+
+.foodItemInfo {
+  padding: 20px;
+}
+
+.foodName p {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.foodDescription {
+  font-size: 12px;
+}
+
+.foodPrice {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 10px 0;
 }
