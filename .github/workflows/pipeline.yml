@@ -66,7 +66,7 @@ jobs:
       - name: Create and sync stack configuration
         run: |
           mkdir -p dev_stack
-          cp docker-compose.yml dev_stack/docker-compose.yml
+          cp backend/docker-compose.yml dev_stack/docker-compose.yml
           echo "BACKEND_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" >> dev_stack/.env
           rsync -r dev_stack "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}:./"
 
