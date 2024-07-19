@@ -4,7 +4,8 @@ on:
     branches: ['main']
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  REPOSITORY: ${{ github.repository }}
+  IMAGE_NAME: food-delivery-backend
 jobs:
   build:
     runs-on: ubuntu-latest
