@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Menu from "../Components/Menu";
+import CardComp from "../Components/CardComp";
 import "../Styles/Home.css";
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -21,6 +22,7 @@ const Home = () => {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
+      <CardComp />
     </div>
   );
 };

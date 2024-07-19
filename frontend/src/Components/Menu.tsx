@@ -36,15 +36,6 @@ const Menu: React.FC<MenuProps> = ({
         ))}
       </div>
       <hr />
-      <div className="menu-list">
-        {menuItems.map((item, i) => (
-          <div className="menu-item" key={i}>
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-            <p>{item.price}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
