@@ -3,6 +3,7 @@ version: '3.3'
 services:
   food-delivery-backend:
     image: ${BACKEND_IMAGE}
+    context: ./backend
     ports:
       - '5000:5000'
     volumes:
