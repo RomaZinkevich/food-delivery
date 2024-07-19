@@ -5,6 +5,8 @@ const getAllRestaraunts = async () => {
     const query = `SELECT * FROM "Restaraunt";`;
     try {
         let result = await pool.query(query);
+        let answer = await pool.query("SELECT current_database();");
+        console.log(answer)
         if (result.rowCount === 0)
             return "Nothing";
             //throw new ContentError("ContentDatabaseError", "Content ID Not Found");
