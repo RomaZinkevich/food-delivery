@@ -5,8 +5,6 @@ services:
     image: ${BACKEND_IMAGE}
     ports:
       - '5000:5000'
-    volumes:
-      - '.:/opt/app'
     environment:
       - CI=true
       - DB_HOST=food-db
