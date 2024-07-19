@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  food-backend:
+  food-delivery-backend:
     image: ${BACKEND_IMAGE}
     ports:
       - '5000:5000'
