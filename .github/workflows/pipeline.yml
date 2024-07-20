@@ -73,6 +73,8 @@ jobs:
           echo "DB_PORT=${{ secrets.DB_PORT }}" >> dev_stack/.env
           echo "DB_USER=${{ secrets.DB_USER }}" >> dev_stack/.env
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> dev_stack/.env
+          echo "NODE_ENV=BUILD" >> dev_stack/.env
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> dev_stack/.env
           rsync -r dev_stack "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}:./"
 
       - name: Start containers via SSH
