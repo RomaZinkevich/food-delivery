@@ -1,0 +1,31 @@
+name: Branch Verification
+on:
+  push:
+    branches: ["backend"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Jest Tests
+
+    env:  # Define environment variables here
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_TESTNAME : ${{ secrets.DB_TESTNAME }}
+      DB_PORT : ${{ secrets.DB_PORT }}
+      NODE_ENV : TEST
+
+    steps:
+      - name: Fetch code
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install backend dependecies
+        working-directory: ./backend
+        run: npm install
+      - name: Testing backend project
+        working-directory: ./backend
+        run: npm run lint && npm run test
