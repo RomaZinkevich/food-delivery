@@ -41,4 +41,4 @@ CREATE TABLE "Ordered_Product" (
     order_id INTEGER REFERENCES "Order"(id)
 );
 
-INSERT INTO "Restaurant" (name) VALUES ('Golden Vodka')
+INSERT INTO "Restaurant" (name) VALUES ('Golden Vodka');
