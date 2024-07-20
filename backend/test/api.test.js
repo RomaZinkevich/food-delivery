@@ -20,7 +20,7 @@ describe("GET /api", () => {
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200, {
-        message: "API - 👋🌎🌍🌏S",
+        message: "API - 👋🌎🌍🌏",
       }, done);
   });
 });
