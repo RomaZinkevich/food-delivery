@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { getAllRestaraunts } = require("../db/restarauntdb");
+const { getAllRestaurants } = require("../db/restaurantdb");
 
-// @desc Gets all Restaraunts
-// @route GET /api/restaraunts
+// @desc Gets all Restaurants
+// @route GET /api/restaurants
 // @access Public
 router.get("/", async (req, res, next) => {
-        const result = await getAllRestaraunts();
+        const result = await getAllRestaurants();
         return res.json(result);
   });
 

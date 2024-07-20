@@ -1,4 +1,4 @@
-CREATE TABLE "Restaraunt" (
+CREATE TABLE "Restaurant" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100)
 );
@@ -6,7 +6,7 @@ CREATE TABLE "Restaraunt" (
 CREATE TABLE "Section" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    restaraunt_id INTEGER REFERENCES "Restaraunt"(id)
+    restaurant_id INTEGER REFERENCES "Restaurant"(id)
 );
 
 CREATE TABLE "Product" (
@@ -41,4 +41,4 @@ CREATE TABLE "Ordered_Product" (
     order_id INTEGER REFERENCES "Order"(id)
 );
 
-INSERT INTO "Restaraunt" (name) VALUES ('Golden Vodka')
+INSERT INTO "Restaurant" (name) VALUES ('Golden Vodka')

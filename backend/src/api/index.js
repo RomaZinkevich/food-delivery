@@ -1,5 +1,5 @@
 const express = require("express");
-const restaraunts = require("./restaraunts");
+const restaurants = require("./restaurants");
 
 const router = express.Router();
 
@@ -9,6 +9,6 @@ router.get("/", (req, res) => {
   });
 });
 
-router.use("/restaraunts", restaraunts);
+router.use("/restaurants", restaurants);
 
 module.exports = router;

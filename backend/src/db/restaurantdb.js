@@ -1,8 +1,8 @@
 const pool = require("./dbconfig");
 
-//@desc Gets all Restaraunts
-const getAllRestaraunts = async () => {
-    const query = `SELECT * FROM "Restaraunt";`;
+//@desc Gets all Restaurants
+const getAllRestaurants = async () => {
+    const query = `SELECT * FROM "Restaurant";`;
     try {
         let result = await pool.query(query);
         if (result.rowCount === 0)
@@ -16,5 +16,5 @@ const getAllRestaraunts = async () => {
 };
 
 module.exports = {
-    getAllRestaraunts: getAllRestaraunts
+    getAllRestaurants: getAllRestaurants
 };
