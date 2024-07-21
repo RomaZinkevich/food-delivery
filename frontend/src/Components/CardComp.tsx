@@ -11,6 +11,7 @@ const CardComp = () => {
         {menuItems.map((item, i) => (
           <FoodItem
             key={i}
+            imageUrl={item.imageUrl}
             id={item.id}
             name={item.name}
             description={item.description}
