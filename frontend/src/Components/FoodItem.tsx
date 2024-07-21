@@ -18,22 +18,22 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
           <div className="counter">
             <RxCross2
               style={{
-                color: "orange",
-                backgroundColor: "grey",
+                color: "red",
+                backgroundColor: "rgb(214, 207, 207)",
                 borderRadius: "50%",
-                margin: "10px 10px",
-                fontSize: "20px",
+                margin: "0px 5px",
+                fontSize: "30px",
               }}
               onClick={() => setQuantity(quantity - 1)}
             />
             <p className="quantity">{quantity}</p>
             <GoPlus
               style={{
-                color: "green",
-                backgroundColor: "grey",
+                color: "#50C878",
+                backgroundColor: "rgb(214, 207, 207)",
                 borderRadius: "50%",
-                margin: "10px 10px",
-                fontSize: "20px",
+                margin: "0px 5px",
+                fontSize: "30px",
               }}
               onClick={() => setQuantity(quantity + 1)}
             />
