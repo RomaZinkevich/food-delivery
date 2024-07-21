@@ -1,3 +1,71 @@
-.foodItemInfo {
-  border: 2px solid red;
+.foodCard {
+  margin: auto;
+  border: 15px;
+  border-radius: 15px;
+  /* box-shadow: 6px 6px 6px 6px grey; */
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  width: 100%;
+  transition: 0.3s;
+  animation: fadingEffect 1s;
+}
+
+.foodImageContainer {
+  position: relative;
+}
+
+.foodImageContainer .adding {
+  color: rgb(11, 242, 7);
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.counter {
+  position: absolute;
+  background-color: white;
+  border-radius: 50px;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  gap: 10px;
+}
+
+.foodImage {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
+.foodContent {
+  padding: 20px;
+}
+
+.foodName {
+  margin-bottom: 10px;
+}
+
+.foodName p {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.foodDesc {
+  margin: 0;
+  font-size: 12px;
+}
+
+.foodprice {
+  margin: 15px 0;
+  font-size: 22px;
+  font-weight: 400;
 }
