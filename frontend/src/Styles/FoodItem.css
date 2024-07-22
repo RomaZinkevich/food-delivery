@@ -13,6 +13,11 @@
   position: relative;
 }
 
+.foodImage {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
 .foodImageContainer .adding {
   color: rgb(11, 242, 7);
   height: 33px;
@@ -40,9 +45,8 @@
   gap: 10px;
 }
 
-.foodImage {
-  width: 100%;
-  border-radius: 15px 15px 0 0;
+.quantity {
+  font-family: "Open Sans", sans-serif;
 }
 
 .foodContent {

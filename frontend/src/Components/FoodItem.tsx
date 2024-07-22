@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../Styles/FoodItem.css";
 import { GoPlus } from "react-icons/go";
-import { RxCross2 } from "react-icons/rx";
+import { FiMinus } from "react-icons/fi";
+import { useFood } from "../Context/context";
 
 const FoodItem = ({ id, name, imageUrl, description, price }) => {
-  const [quantity, setQuantity] = useState<number>(0);
-
-  const textTruncate = (text, maxLength) => {
+  const { addToCart, removeFromCart, cartItems } = useFood();
+  const textTruncate = (text: string, maxLength: number) => {
     if (text.length > maxLength) {
       const truncatedText = text.slice(0, maxLength);
       return truncatedText.slice(0, truncatedText.lastIndexOf(" ")) + "...";
@@ -17,14 +17,11 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
     <div className="foodCard">
       <div className="foodImageContainer">
         <img className="foodImage" src={imageUrl} alt="" />
-        {quantity === 0 ? (
-          <GoPlus
-            className="adding"
-            onClick={() => setQuantity(quantity + 1)}
-          />
+        {!cartItems[id] ? (
+          <GoPlus className="adding" onClick={() => addToCart(id)} />
         ) : (
           <div className="counter">
-            <RxCross2
+            <FiMinus
               style={{
                 color: "red",
                 backgroundColor: "rgb(214, 207, 207)",
@@ -32,9 +29,9 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
                 margin: "0px 5px",
                 fontSize: "30px",
               }}
-              onClick={() => setQuantity(quantity - 1)}
+              onClick={() => removeFromCart(id)}
             />
-            <p className="quantity">{quantity}</p>
+            <p className="quantity">{cartItems[id]}</p>
             <GoPlus
               style={{
                 color: "#50C878",
@@ -43,7 +40,7 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
                 margin: "0px 5px",
                 fontSize: "30px",
               }}
-              onClick={() => setQuantity(quantity + 1)}
+              onClick={() => addToCart(id)}
             />
           </div>
         )}
@@ -60,10 +57,3 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
 };
 
 export default FoodItem;
-
-{
-  /* <RxCross2 /> */
-}
-{
-  /* <CiCirclePlus /> */
-}
