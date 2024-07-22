@@ -5,6 +5,14 @@ import { RxCross2 } from "react-icons/rx";
 
 const FoodItem = ({ id, name, imageUrl, description, price }) => {
   const [quantity, setQuantity] = useState<number>(0);
+
+  const textTruncate = (text, maxLength) => {
+    if (text.length > maxLength) {
+      const truncatedText = text.slice(0, maxLength);
+      return truncatedText.slice(0, truncatedText.lastIndexOf(" ")) + "...";
+    }
+    return text;
+  };
   return (
     <div className="foodCard">
       <div className="foodImageContainer">
@@ -44,7 +52,7 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
         <div className="foodName">
           <p>{name}</p>
         </div>
-        <p className="foodDesc">{description}</p>
+        <p className="foodDesc">{textTruncate(description, 50)}</p>
         <p className="foodprice">{price}</p>
       </div>
     </div>
