@@ -18,14 +18,14 @@ interface FoodContextProviderProps {
 const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
   const [cartItems, setCartItems] = useState<{ [key: number]: number }>({});
   const addToCart = (itemID: number) => {
-    if (!cardItems[itemID]) {
+    if (!cartItems[itemID]) {
       setCartItems({ ...cartItems, [itemID]: 1 });
     } else {
-      setCartItems({ ...cardItems, [itemID]: cardItems[itemID] + 1 });
+      setCartItems({ ...cartItems, [itemID]: cartItems[itemID] + 1 });
     }
   };
   const removeFromCart = (itemID: number) => {
-    setCartItems({ ...cardItems, [itemID]: cardItems[itemID] - 1 });
+    setCartItems({ ...cartItems, [itemID]: cartItems[itemID] - 1 });
   };
   const contextValue = {
     menuItems,
