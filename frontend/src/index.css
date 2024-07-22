@@ -103,3 +103,12 @@ button:focus-visible {
     opacity: 1;
   }
 }
+
+@keyframes blinkingEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

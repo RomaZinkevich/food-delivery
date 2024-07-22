@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "../Styles/FoodItem.css";
 import { GoPlus } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
+import { FiMinus } from "react-icons/fi";
 
 const FoodItem = ({ id, name, imageUrl, description, price }) => {
   const [quantity, setQuantity] = useState<number>(0);
-
-  const textTruncate = (text, maxLength) => {
+  const textTruncate = (text: string, maxLength: number) => {
     if (text.length > maxLength) {
       const truncatedText = text.slice(0, maxLength);
       return truncatedText.slice(0, truncatedText.lastIndexOf(" ")) + "...";
@@ -24,7 +24,7 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
           />
         ) : (
           <div className="counter">
-            <RxCross2
+            <FiMinus
               style={{
                 color: "red",
                 backgroundColor: "rgb(214, 207, 207)",
