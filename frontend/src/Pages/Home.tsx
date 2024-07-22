@@ -5,12 +5,11 @@ import "../Styles/Home.css";
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [displayedWord, setDisplayedWord] = useState<string>("");
-  const words = [
+  const phrases = [
     "Lorem ipsum dolor sit",
     "Amet consectetur adipisicing elit",
     "Totam minus dolores voluptatem!",
   ];
-  // let element = document.getElementById("word");
 
   function sleep(ms: number | undefined) {
     return new Promise((res) => {
@@ -20,7 +19,7 @@ const Home = () => {
   const loop = async () => {
     let currInd = 0;
     while (true) {
-      let currWord = words[currInd];
+      let currWord = phrases[currInd];
       for (let i = 0; i < currWord.length; i++) {
         setDisplayedWord(currWord.slice(0, i + 1));
         await sleep(100);
@@ -35,7 +34,7 @@ const Home = () => {
 
       await sleep(1000);
 
-      if (currInd != words.length - 1) {
+      if (currInd != phrases.length - 1) {
         currInd++;
       } else {
         currInd = 0;

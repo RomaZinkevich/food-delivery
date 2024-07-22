@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import { menuItems } from "../assets/menuitems";
 
 interface FoodContextType {
@@ -29,7 +35,15 @@ const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
   };
   const contextValue = {
     menuItems,
+    cartItems,
+    setCartItems,
+    addToCart,
+    removeFromCart,
   };
+
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems]);
 
   return (
     <FoodContext.Provider value={contextValue}>{children}</FoodContext.Provider>
