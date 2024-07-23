@@ -4,7 +4,7 @@ export const menuItems = [
     name: "Margherita Pizza",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Pizza",
+    category: "Italian",
     price: 8.99,
     description:
       "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
@@ -14,7 +14,7 @@ export const menuItems = [
     name: "Pepperoni Pizza",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Pizza",
+    category: "Italian",
     price: 9.99,
     description: "Pepperoni pizza with a generous portion of spicy pepperoni.",
   },
@@ -23,7 +23,7 @@ export const menuItems = [
     name: "Caesar Salad",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Salad",
+    category: "Italian",
     price: 7.99,
     description:
       "Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
@@ -33,7 +33,7 @@ export const menuItems = [
     name: "Grilled Chicken Sandwich",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Sandwich",
+    category: "American",
     price: 10.99,
     description:
       "Grilled chicken breast sandwich with lettuce, tomato, and mayo.",
@@ -43,7 +43,7 @@ export const menuItems = [
     name: "Spaghetti Carbonara",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Pasta",
+    category: "Italian",
     price: 12.99,
     description:
       "Traditional Italian pasta with eggs, cheese, pancetta, and pepper.",
@@ -53,7 +53,7 @@ export const menuItems = [
     name: "Cheeseburger",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Burger",
+    category: "American",
     price: 11.99,
     description:
       "Juicy cheeseburger with cheddar cheese, lettuce, tomato, and onion.",
@@ -63,7 +63,7 @@ export const menuItems = [
     name: "Fish Tacos",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Tacos",
+    category: "Mexican",
     price: 9.99,
     description:
       "Two fish tacos with cabbage slaw, lime crema, and fresh salsa.",
@@ -73,7 +73,7 @@ export const menuItems = [
     name: "Chocolate Cake",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Dessert",
+    category: "Indian",
     price: 6.99,
     description: "Rich chocolate cake with a molten chocolate center.",
   },
@@ -82,7 +82,7 @@ export const menuItems = [
     name: "Tiramisu",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Dessert",
+    category: "Italian",
     price: 7.99,
     description:
       "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cheese.",
@@ -92,7 +92,7 @@ export const menuItems = [
     name: "Espresso",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Beverage",
+    category: "Italian",
     price: 2.99,
     description: "Strong and bold Italian coffee shot.",
   },
@@ -101,7 +101,7 @@ export const menuItems = [
     name: "Lemonade",
     imageUrl:
       "https://www.eatout.co.za/wp-content/uploads/2014/11/Tempura-prawns-recipe-07Jun13-021812.jpg",
-    category: "Beverage",
+    category: "Filipino",
     price: 3.99,
     description: "Refreshing lemonade made with fresh lemons.",
   },

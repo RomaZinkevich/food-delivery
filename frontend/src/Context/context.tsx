@@ -23,6 +23,7 @@ interface FoodContextProviderProps {
 
 const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
   const [cartItems, setCartItems] = useState<{ [key: number]: number }>({});
+
   const addToCart = (itemID: number) => {
     if (!cartItems[itemID]) {
       setCartItems({ ...cartItems, [itemID]: 1 });
@@ -30,9 +31,11 @@ const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
       setCartItems({ ...cartItems, [itemID]: cartItems[itemID] + 1 });
     }
   };
+
   const removeFromCart = (itemID: number) => {
     setCartItems({ ...cartItems, [itemID]: cartItems[itemID] - 1 });
   };
+
   const contextValue = {
     menuItems,
     cartItems,

@@ -65,7 +65,7 @@ const Home = () => {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
-      <CardComp />
+      <CardComp selectedCategory={selectedCategory} />
     </div>
   );
 };
