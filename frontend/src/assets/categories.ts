@@ -8,7 +8,7 @@ export const categories: string[] = [
   "Thai",
   "Greek",
   "Spanish",
-  "Korean",
+  "Italian",
   "Vietnamese",
   "Turkish",
   "Moroccan",

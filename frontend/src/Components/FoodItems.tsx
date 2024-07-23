@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Styles/FoodItem.css";
+import "../Styles/FoodItems.css";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
 import { useFood } from "../Context/context";
