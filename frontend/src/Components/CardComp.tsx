@@ -5,13 +5,12 @@ import FoodItem from "../Components/FoodItems";
 
 interface CardProps {
   selectedCategory: string;
-  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const CardComp: React.FC<CardProps> = ({ selectedCategory }) => {
   const { menuItems } = useFood();
   return (
-    <div className="foodItem">
+    <div className="foodItem" id="exploreMenu">
       <h2>Lorem ipsum dolor sit amet</h2>
       <div className="foodList">
         {menuItems.map((item, i) => {

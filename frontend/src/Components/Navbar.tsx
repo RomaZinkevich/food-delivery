@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import "../Styles/Navbar.css";
 import food from "../images/food.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
   const navigate = useNavigate();
@@ -11,24 +11,27 @@ const Navbar = () => {
     <div className="navbar">
       <img src={food} alt="logo" />
       <ul>
-        <li
+        <Link
+          to=""
           onClick={() => setMenu("Home")}
           className={menu === "Home" ? "active" : ""}
         >
           Home
-        </li>
-        <li
+        </Link>
+        <a
+          href="#exploreMenu"
           onClick={() => setMenu("Menu")}
           className={menu === "Menu" ? "active" : ""}
         >
           Menu
-        </li>
-        <li
+        </a>
+        <a
+          href="#"
           onClick={() => setMenu("Contactus")}
           className={menu === "Contactus" ? "active" : ""}
         >
           Contact us
-        </li>
+        </a>
       </ul>
       <div className="navbarRight">
         <div

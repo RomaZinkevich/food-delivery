@@ -67,6 +67,10 @@ button:focus-visible {
   }
 } */
 
+* {
+  scroll-behavior: smooth;
+}
+
 :root {
   background-color: rgb(246, 232, 215);
 }
