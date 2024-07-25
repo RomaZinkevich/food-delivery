@@ -1,5 +1,6 @@
 const request = require("supertest");
-const restaurantdb = require("../src/db/restaurantdb");
+const seedDB = require("../src/db/seeddb");
+const clearDB = require("../src/db/cleardb");
 const pool = require("../src/db/dbconfig");
 const app = require("../src/app");
 
@@ -16,8 +17,8 @@ afterAll((done) => {
 
 describe("GET /api/restaurants", () => {
     beforeEach(async () => {
-        await restaurantdb.clearRestaurants();
-        await restaurantdb.seedRestaurantDB();
+        await clearDB.clear();
+        await seedDB.seed();
     });
 
     it("json message", async () => {
