@@ -14,7 +14,7 @@ CREATE TABLE "Product" (
     name VARCHAR(100),
     image VARCHAR(500),
     section_id INTEGER REFERENCES "Section"(id),
-    price INTEGER,
+    price DOUBLE PRECISION,
     ingredients VARCHAR(500)
 );
 
