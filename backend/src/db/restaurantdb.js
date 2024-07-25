@@ -1,17 +1,15 @@
 const pool = require("./dbconfig");
+const RestaurantError = require('../utils/RestaurantError');
 
 //@desc Gets all Restaurants
 const getAllRestaurants = async () => {
     const query = `SELECT * FROM "Restaurant";`;
     try {
         let result = await pool.query(query);
-        if (result.rowCount === 0)
-            return "Nothing";
-            //throw new ContentError("ContentDatabaseError", "Content ID Not Found");
         return result.rows;
     } catch (error) {
-        console.log(error.message);
-        //throw new ContentError("ContentDatabaseError", error.details ? error.details : "Unexpected database error");
+        console.log(error);
+        throw new RestaurantError("RestaurantDatabaseError", "Unexpected database error");
     }
 };
 
