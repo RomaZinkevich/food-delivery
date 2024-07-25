@@ -12,7 +12,7 @@ CREATE TABLE "Section" (
 CREATE TABLE "Product" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    image VARCHAR(100),
+    image VARCHAR(500),
     section_id INTEGER REFERENCES "Section"(id),
     price INTEGER,
     ingredients VARCHAR(500)
@@ -40,5 +40,3 @@ CREATE TABLE "Ordered_Product" (
     quantity INTEGER,
     order_id INTEGER REFERENCES "Order"(id)
 );
-
-INSERT INTO "Restaurant" (name) VALUES ('Golden Vodka');
