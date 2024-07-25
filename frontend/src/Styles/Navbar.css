@@ -18,7 +18,8 @@ html {
   gap: 30px;
 }
 
-.navbar li {
+.navbar a {
+  text-decoration: none;
   list-style: none;
   color: black;
   font-size: 17px;

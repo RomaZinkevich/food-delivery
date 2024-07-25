@@ -5,6 +5,7 @@ import {
   ReactNode,
   useEffect,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import { menuItems } from "../assets/menuitems";
 
 interface FoodContextType {
@@ -23,6 +24,12 @@ interface FoodContextProviderProps {
 
 const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
   const [cartItems, setCartItems] = useState<{ [key: number]: number }>({});
+  // const [user, setUser] = useState();
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  // }, [navigate])
 
   const addToCart = (itemID: number) => {
     if (!cartItems[itemID]) {

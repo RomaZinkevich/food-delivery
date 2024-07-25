@@ -21,14 +21,14 @@ const Home = () => {
     while (true) {
       let currWord = phrases[currInd];
       for (let i = 0; i < currWord.length; i++) {
-        setDisplayedWord(currWord.slice(0, i + 1));
+        setDisplayedWord(currWord.substring(0, i + 1));
         await sleep(100);
       }
 
       await sleep(1000);
 
       for (let i = currWord.length; i > 0; i--) {
-        setDisplayedWord(currWord.slice(0, i - 1));
+        setDisplayedWord(currWord.substring(0, i - 1));
         await sleep(100);
       }
 
