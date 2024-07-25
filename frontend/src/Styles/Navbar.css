@@ -56,3 +56,21 @@ html {
   top: -8px;
   right: -8px;
 }
+
+.loginButton {
+  padding: 12px 30px;
+  margin: 12px 12px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(218, 229, 239);
+  font-family: "Open Sans", sans-serif;
+}
+
+.signupButton {
+  padding: 12px 30px;
+  margin: 12px 12px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(218, 229, 239);
+  font-family: "Open Sans", sans-serif;
+}
