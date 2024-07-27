@@ -8,7 +8,6 @@ const getAllRestaurants = async () => {
         let result = await pool.query(query);
         return result.rows;
     } catch (error) {
-        console.log(error);
         throw new RestaurantError("RestaurantDatabaseError", "Unexpected database error");
     }
 };

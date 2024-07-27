@@ -46,6 +46,7 @@ describe("GET /api/sections", () => {
         const response = await request(app).get('/api/sections/222');
         expect(response.statusCode).toBe(400);
         expect(response.body.type).toEqual("SectionDatabaseError")
+        expect(response.body.details).toEqual("Section ID Not Found")
     });
 
     it("Products with section_id=1", async () => {
@@ -70,5 +71,12 @@ describe("GET /api/sections", () => {
         expect(response.body[0].image).toEqual("image");
         expect(response.body[0].price).toEqual(13.99);
         expect(response.body[0].ingredients).toEqual("chicken, beef, curry sauce");
+    });
+
+    it("Products with non-existing section_id", async () => {
+        const response = await request(app).get("/api/sections/33/products");
+        expect(response.statusCode).toBe(400);
+        expect(response.body.type).toEqual("ProductDatabaseError");
+        expect(response.body.details).toEqual("Section ID Not Found or No Products in Section");
     });
 });
