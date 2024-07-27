@@ -13,6 +13,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - NODE_ENV=BUILD
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
     restart: always
   food-db:
     image: postgres:latest

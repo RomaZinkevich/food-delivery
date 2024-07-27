@@ -33,7 +33,7 @@ const getProducts = async (id) => {
     try {
         let result = await pool.query(query);
         if (result.rowCount === 0)
-            throw new SectionError("SectionError", "Section ID Not Found");
+            throw new ProductError("ProductError", "Section ID Not Found or No Products in Section");
         return result.rows;
     } catch (error) {
         throw new ProductError("ProductDatabaseError", error.details ? error.details : "Unexpected database error");

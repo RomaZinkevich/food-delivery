@@ -15,6 +15,7 @@ jobs:
       DB_TESTNAME : ${{ secrets.DB_TESTNAME }}
       DB_PORT : ${{ secrets.DB_PORT }}
       NODE_ENV : TEST
+      JWT_SECRET_KEY : ${{ secrets.JWT_SECRET_KEY }}
 
     steps:
       - name: Fetch code

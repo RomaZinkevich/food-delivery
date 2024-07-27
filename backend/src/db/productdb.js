@@ -8,7 +8,6 @@ const getAllProducts = async () => {
         let result = await pool.query(query);
         return result.rows;
     } catch (error) {
-        console.log(error)
         throw new ProductError("ProductDatabaseError", "Unexpected database error");
     }
 };
