@@ -31,7 +31,9 @@ const Menu: React.FC<MenuProps> = ({
             className="category-item"
             key={i}
           >
-            <p className={selectedCategory === item ? "active" : ""}>{item}</p>
+            <p className={selectedCategory === item ? "active" : "notactive"}>
+              {item}
+            </p>
           </div>
         ))}
       </div>

@@ -13,11 +13,15 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
     }
     return text;
   };
+
+  const cartItem = cartItems.find((item) => item.id === id);
+  const quantity = cartItem ? cartItem.quantity : 0;
+
   return (
     <div className="foodCard">
       <div className="foodImageContainer">
         <img className="foodImage" src={imageUrl} alt="" />
-        {!cartItems[id] ? (
+        {quantity === 0 ? (
           <GoPlus className="adding" onClick={() => addToCart(id)} />
         ) : (
           <div className="counter">
@@ -31,7 +35,7 @@ const FoodItem = ({ id, name, imageUrl, description, price }) => {
               }}
               onClick={() => removeFromCart(id)}
             />
-            <p className="quantity">{cartItems[id]}</p>
+            <p className="quantity">{quantity}</p>
             <GoPlus
               style={{
                 color: "#50C878",

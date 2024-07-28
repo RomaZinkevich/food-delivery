@@ -1,30 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useFood } from "../Context/context";
 
 const Cart = () => {
-  const fruits: string[] = [
-    "apple",
-    "banana",
-    "grapes",
-    "strawberry",
-    "orange",
-    "blueberry",
-  ];
-
-  const [selectedFruit, setSelectedFruit] = useState<string[]>([]);
-  const [cartUpdated, setCartUpdated] = useState(false);
-
-  const addFruitToTheTable = (fruit: string) => {
-    setCartUpdated(true);
-    if (!selectedFruit.includes(fruit)) {
-      setSelectedFruit([...selectedFruit, fruit]);
-    }
-  };
-
-  const removeFruit = (fruit: string) => {
-    setCartUpdated(true);
-    setSelectedFruit(selectedFruit.filter((item) => item !== fruit));
-  };
+  const { cartItems, deleteFromCart } = useFood();
 
   return (
     <div>
@@ -36,33 +15,93 @@ const Cart = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
+      ></ul>
+      <table
+        style={{ margin: "auto", borderCollapse: "collapse", width: "80%" }}
       >
-        {fruits.map((fruit, i) => (
-          <li
-            style={{ cursor: "pointer" }}
-            onClick={() => addFruitToTheTable(fruit)}
-            key={i}
-          >
-            {fruit}
-          </li>
-        ))}
-      </ul>
-      <table style={{ margin: "auto" }}>
         <thead>
-          <tr>
-            <td>name</td>
-            <td style={{ paddingLeft: "20px" }}>remove</td>
+          <tr style={{ backgroundColor: "#f2f2f2" }}>
+            <th
+              style={{
+                border: "1px solid #dddddd",
+                textAlign: "left",
+                padding: "8px",
+              }}
+            >
+              No.
+            </th>
+            <th
+              style={{
+                border: "1px solid #dddddd",
+                textAlign: "left",
+                padding: "8px",
+              }}
+            >
+              Name
+            </th>
+            <th
+              style={{
+                border: "1px solid #dddddd",
+                textAlign: "left",
+                padding: "8px",
+              }}
+            >
+              Quantity
+            </th>
+            <th
+              style={{
+                border: "1px solid #dddddd",
+                textAlign: "left",
+                padding: "8px",
+              }}
+            >
+              Remove
+            </th>
           </tr>
         </thead>
         <tbody>
-          {selectedFruit.map((selFruit, i) => (
-            <tr key={i}>
-              <td>{selFruit}</td>
+          {cartItems.map((item, i) => (
+            <tr
+              key={item.id}
+              style={{
+                backgroundColor: i % 2 === 0 ? "#f9f9f9" : "#ffffff",
+              }}
+            >
               <td
-                style={{ paddingLeft: "20px", cursor: "pointer" }}
-                onClick={() => removeFruit(selFruit)}
+                style={{
+                  border: "1px solid #dddddd",
+                  textAlign: "left",
+                  padding: "8px",
+                }}
               >
-                X
+                {item.id}
+              </td>
+              <td
+                style={{
+                  border: "1px solid #dddddd",
+                  textAlign: "left",
+                  padding: "8px",
+                }}
+              >
+                {item.name}
+              </td>
+              <td
+                style={{
+                  border: "1px solid #dddddd",
+                  textAlign: "left",
+                  padding: "8px",
+                }}
+              >
+                {item.quantity}
+              </td>
+              <td
+                style={{
+                  border: "1px solid #dddddd",
+                  textAlign: "left",
+                  padding: "8px",
+                }}
+              >
+                <button onClick={() => deleteFromCart(item.id)}>Remove</button>
               </td>
             </tr>
           ))}

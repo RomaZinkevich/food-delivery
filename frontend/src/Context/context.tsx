@@ -10,8 +10,14 @@ import { menuItems } from "../assets/menuitems";
 
 interface FoodContextType {
   menuItems: typeof menuItems;
-  cartItems: { [key: number]: number };
+  cartItems: CartItem[];
   addToCart: (itemID: number) => void;
+}
+
+interface CartItem {
+  id: number;
+  quantity: number;
+  name: string;
 }
 
 export const FoodContext = createContext<FoodContextType | undefined>(
@@ -23,24 +29,44 @@ interface FoodContextProviderProps {
 }
 
 const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
-  const [cartItems, setCartItems] = useState<{ [key: number]: number }>({});
-  // const [user, setUser] = useState();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  // }, [navigate])
-
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const addToCart = (itemID: number) => {
-    if (!cartItems[itemID]) {
-      setCartItems({ ...cartItems, [itemID]: 1 });
-    } else {
-      setCartItems({ ...cartItems, [itemID]: cartItems[itemID] + 1 });
+    const item = menuItems.find((menuItem) => menuItem.id === itemID);
+    if (item) {
+      setCartItems((prevItems) => {
+        const existingItemIndex = prevItems.findIndex(
+          (cartItem) => cartItem.id === itemID
+        );
+        if (existingItemIndex >= 0) {
+          return prevItems.map((cartItem, index) =>
+            index === existingItemIndex
+              ? { ...cartItem, quantity: cartItem.quantity + 1 }
+              : cartItem
+          );
+        } else {
+          return [...prevItems, { id: itemID, name: item.name, quantity: 1 }];
+        }
+      });
     }
   };
 
   const removeFromCart = (itemID: number) => {
-    setCartItems({ ...cartItems, [itemID]: cartItems[itemID] - 1 });
+    setCartItems((prevItems) => {
+      return prevItems.reduce((newItems, cartItem) => {
+        if (cartItem.id === itemID) {
+          if (cartItem.quantity > 1) {
+            newItems.push({ ...cartItem, quantity: cartItem.quantity - 1 });
+          }
+        } else {
+          newItems.push(cartItem);
+        }
+        return newItems;
+      }, [] as CartItem[]);
+    });
+  };
+
+  const deleteFromCart = (itemID: number) => {
+    setCartItems(cartItems.filter((thing) => thing.id !== itemID));
   };
 
   const contextValue = {
@@ -49,6 +75,7 @@ const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    deleteFromCart,
   };
 
   useEffect(() => {
