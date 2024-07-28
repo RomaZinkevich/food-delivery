@@ -1,5 +1,5 @@
 const errorHandler = (error, req, res, next) => {
-    if (["SectionError", "RestaurantError", "ProductError"].includes(error.name)){
+    if (["SectionError", "RestaurantError", "ProductError", "UserError"].includes(error.name)){
         return res.status(400).send({
             type: error.type,
             details: error.details

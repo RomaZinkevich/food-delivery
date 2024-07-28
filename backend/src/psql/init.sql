@@ -24,7 +24,7 @@ CREATE TABLE "User" (
     address VARCHAR(100),
     payment VARCHAR(100),
     phone VARCHAR(100),
-    email VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
     password VARCHAR(100),
     role INTEGER
 );
