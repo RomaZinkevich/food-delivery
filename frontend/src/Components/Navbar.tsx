@@ -43,7 +43,10 @@ const Navbar = () => {
                 navigate("/cart");
               }}
             >
-              <FaShoppingCart />
+              <FaShoppingCart
+                onClick={() => setMenu("cart")}
+                className={menu === "cart" ? "active" : ""}
+              />
               <div className="dot"></div>
             </div>
             <div className="icon2">

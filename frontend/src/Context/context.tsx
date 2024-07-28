@@ -30,13 +30,6 @@ interface FoodContextProviderProps {
 
 const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  // const [user, setUser] = useState();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  // }, [navigate])
-
   const addToCart = (itemID: number) => {
     const item = menuItems.find((menuItem) => menuItem.id === itemID);
     if (item) {
@@ -72,12 +65,17 @@ const FoodContextProvider = ({ children }: FoodContextProviderProps) => {
     });
   };
 
+  const deleteFromCart = (itemID: number) => {
+    setCartItems(cartItems.filter((thing) => thing.id !== itemID));
+  };
+
   const contextValue = {
     menuItems,
     cartItems,
     setCartItems,
     addToCart,
     removeFromCart,
+    deleteFromCart,
   };
 
   useEffect(() => {
