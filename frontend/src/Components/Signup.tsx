@@ -54,6 +54,7 @@ const Signup = () => {
             placeholder="Enter your name"
             required
           />
+          <div></div>
           <input
             name="email"
             onChange={handleChange}
@@ -61,6 +62,7 @@ const Signup = () => {
             placeholder="Enter your email ID"
             required
           />
+          <div></div>
           <input
             name="password"
             onChange={handleChange}
@@ -68,6 +70,7 @@ const Signup = () => {
             placeholder="Enter your Password"
             required
           />
+          <div></div>
         </div>
         <button type="submit" className="button">
           signup
