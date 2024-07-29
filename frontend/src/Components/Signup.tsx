@@ -9,6 +9,9 @@ const Signup = () => {
     password: "",
   });
 
+  const [error, setError] = useState("");
+  const [authentication, setAuthentication] = useState("Signup");
+
   const handleSubmission = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -44,39 +47,69 @@ const Signup = () => {
     <div className="login">
       <form onSubmit={handleSubmission} className="loginContainer">
         <div className="title">
-          <h2>Sign up</h2>
+          <h2>{authentication === "Signup" ? "Signup" : "Login"}</h2>
         </div>
-        <div className="inputs">
-          <input
-            name="name"
-            onChange={handleChange}
-            type="text"
-            placeholder="Enter your name"
-            required
-          />
-          <div></div>
-          <input
-            name="email"
-            onChange={handleChange}
-            type="email"
-            placeholder="Enter your email ID"
-            required
-          />
-          <div></div>
-          <input
-            name="password"
-            onChange={handleChange}
-            type="password"
-            placeholder="Enter your Password"
-            required
-          />
-          <div></div>
-        </div>
+        {authentication == "Signup" ? (
+          <div className="inputs">
+            <input
+              name="name"
+              onChange={handleChange}
+              type="text"
+              placeholder="Enter your name"
+              required
+            />
+            {}
+            <input
+              name="email"
+              onChange={handleChange}
+              type="email"
+              placeholder="Enter your email ID"
+              required
+            />
+            {}
+            <input
+              name="password"
+              onChange={handleChange}
+              type="password"
+              placeholder="Enter your Password"
+              required
+            />
+          </div>
+        ) : (
+          <div className="inputs">
+            <input
+              name="email"
+              onChange={handleChange}
+              type="email"
+              placeholder="Enter your email ID"
+              required
+            />
+            {}
+            <input
+              name="password"
+              onChange={handleChange}
+              type="password"
+              placeholder="Enter your Password"
+              required
+            />
+          </div>
+        )}
+        {}
         <button type="submit" className="button">
-          signup
+          {authentication === "Signup" ? "Signup" : "Login"}
         </button>
         <br />
-        <a>Already have an account? Click here</a>
+        <a
+          onClick={() => {
+            authentication === "Signup"
+              ? setAuthentication("Login")
+              : setAuthentication("Signup");
+          }}
+        >
+          {authentication === "Signup"
+            ? "Already have an account? Click here"
+            : "Don't have an account? Register here."}
+        </a>
       </form>
     </div>
   );
