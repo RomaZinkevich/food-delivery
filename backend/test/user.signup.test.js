@@ -15,7 +15,7 @@ afterAll((done) => {
     });
 });
 
-describe("POST /api/users", () => {
+describe("POST /api/users/signup", () => {
     beforeEach(async () => {
         await clearDB.clear();
         await seedDB.seed();
@@ -29,7 +29,7 @@ describe("POST /api/users", () => {
         }
 
         let response = await request(app)
-        .post('/api/users')
+        .post('/api/users/signup')
         .set("Accept", "application/json")
         .send(newUser);
 
@@ -49,7 +49,7 @@ describe("POST /api/users", () => {
         }
 
         let response = await request(app)
-        .post('/api/users')
+        .post('/api/users/signup')
         .set("Accept", "application/json")
         .send(user);
 
@@ -65,7 +65,7 @@ describe("POST /api/users", () => {
         }
 
         let response = await request(app)
-        .post('/api/users')
+        .post('/api/users/signup')
         .set("Accept", "application/json")
         .send(newUser);
 
@@ -81,7 +81,7 @@ describe("POST /api/users", () => {
         }
 
         let response = await request(app)
-        .post('/api/users')
+        .post('/api/users/signup')
         .set("Accept", "application/json")
         .send(newUser);
 
@@ -97,7 +97,7 @@ describe("POST /api/users", () => {
         }
 
         let response = await request(app)
-        .post('/api/users')
+        .post('/api/users/signup')
         .set("Accept", "application/json")
         .send(newUser);
 
@@ -114,7 +114,7 @@ describe("POST /api/users", () => {
         }
 
         let response = await request(app)
-        .post('/api/users')
+        .post('/api/users/signup')
         .set("Accept", "application/json")
         .send(newUser);
 
